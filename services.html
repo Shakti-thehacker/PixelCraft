@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | PixelCraft Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">PixelCraft</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+                    <a href="about.html" class="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
+                    <a href="projects.html" class="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Projects</a>
+                    <a href="services.html" class="text-indigo-600 dark:text-indigo-400 font-medium">Services</a>
+                    <a href="order.html" class="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Order</a>
+                    <a href="contact.html" class="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i data-feather="moon" data-theme-icon="moon" class="hidden"></i>
+                        <i data-feather="sun" data-theme-icon="sun" class="hidden"></i>
+</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-md text-gray-700 dark:text-gray-200">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 pb-3 px-4">
+            <a href="index.html" class="block py-2 text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+            <a href="about.html" class="block py-2 text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
+            <a href="projects.html" class="block py-2 text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Projects</a>
+            <a href="services.html" class="block py-2 text-indigo-600 dark:text-indigo-400 font-medium">Services</a>
+            <a href="order.html" class="block py-2 text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Order</a>
+            <a href="contact.html" class="block py-2 text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+                    <button id="theme-toggle-mobile" onclick="toggleTheme()" class="mt-2 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i data-feather="moon" data-theme-icon="moon" class="hidden"></i>
+                        <i data-feather="sun" data-theme-icon="sun" class="hidden"></i>
+</button>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
+            <p class="text-xl max-w-3xl mx-auto">Comprehensive digital solutions to help your business thrive online.</p>
+        </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="globe" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Web Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Custom websites built with modern technologies to ensure performance, security, and scalability.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Responsive Design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>SEO Optimized</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Fast Loading</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="layout" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">UI/UX Design</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Beautiful, intuitive interfaces that enhance user experience and drive engagement.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>User Research</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Wireframing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Interactive Prototypes</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="shopping-cart" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">E-commerce Solutions</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Complete online stores with secure payment gateways and inventory management.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Product Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Secure Checkout</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Payment Integration</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="smartphone" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Mobile App Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Cross-platform mobile applications for iOS and Android with native performance.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>iOS & Android</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Offline Support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Push Notifications</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="search" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">SEO & Digital Marketing</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Increase your online visibility and attract more customers with our marketing strategies.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Keyword Research</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Content Strategy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Performance Tracking</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md p-8 transition-all duration-300">
+                    <div class="service-icon bg-indigo-100 dark:bg-indigo-900">
+                        <i data-feather="tool" class="text-indigo-600 dark:text-indigo-400 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Maintenance & Support</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Ongoing support to keep your website running smoothly and securely.</p>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Security Updates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>Performance Optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                            <span>24/7 Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Simple, Transparent Pricing</h2>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Choose the package that fits your needs. Custom solutions available.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md">
+                    <div class="p-8 text-center border-b border-gray-200 dark:border-gray-600">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Basic</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">₹15,999</span>
+                            <span class="text-gray-600 dark:text-gray-300">/project</span>
+                        </div>
+                        <a href="order.html" class="inline-block w-full bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>5 Page Website</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Responsive Design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Basic SEO</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Contact Form</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="x" class="text-red-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span class="opacity-50">E-commerce</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="x" class="text-red-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span class="opacity-50">CMS Integration</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl rounded-tr">POPULAR</div>
+                    <div class="p-8 text-center border-b border-gray-200 dark:border-gray-600">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Professional</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">₹35,999</span>
+                            <span class="text-gray-600 dark:text-gray-300">/project</span>
+                        </div>
+                        <a href="order.html" class="inline-block w-full bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Up to 15 Pages</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Custom Design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Advanced SEO</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>CMS Integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Basic E-commerce</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="x" class="text-red-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span class="opacity-50">Custom Features</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md">
+                    <div class="p-8 text-center border-b border-gray-200 dark:border-gray-600">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Enterprise</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900 dark:text-white">₹75,999+</span>
+                            <span class="text-gray-600 dark:text-gray-300">/project</span>
+                        </div>
+                        <a href="order.html" class="inline-block w-full bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Unlimited Pages</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Premium Design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Full E-commerce</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Custom Features</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>API Integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check" class="text-green-500 mr-2 mt-1 w-4 h-4"></i>
+                                <span>Priority Support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Our Work Process</h2>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">A structured approach to ensure quality and timely delivery.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Discovery</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We discuss your requirements and goals to understand your needs.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Planning</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We create a detailed project plan with timelines and milestones.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Our team builds your solution with regular updates and feedback.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Delivery</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We launch your project and provide training and ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
+            <p class="text-xl mb-10 max-w-3xl mx-auto">Let's create something amazing together. Get in touch or place your order today.</p>
+            <div class="space-x-4">
+                <a href="order.html" class="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 transform hover:scale-105">Place Your Order</a>
+                <a href="contact.html" class="inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white/10 transition duration-300">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">PixelCraft</h3>
+                    <p class="mb-4">Creating digital experiences that inspire and engage.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                        <li><a href="projects.html" class="hover:text-white transition">Projects</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Web Development</a></li>
+                        <li><a href="#" class="hover:text-white transition">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-white transition">E-commerce</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mobile Apps</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="mail" class="mr-2 mt-1"></i>
+                            <span>hello@pixelcraft.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="phone" class="mr-2 mt-1"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="mr-2 mt-1"></i>
+                            <span>123 Digital Street, Web City</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p>&copy; 2023 PixelCraft Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Theme handling
+        function setTheme(theme) {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            setTheme(currentTheme);
+            updateThemeToggleIcons();
+        }
+
+        function updateThemeToggleIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.querySelectorAll('[data-theme-icon]').forEach(el => {
+                el.classList.toggle('hidden', el.dataset.themeIcon !== (isDark ? 'moon' : 'sun'));
+            });
+        }
+
+        // Initialize theme
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+
+        // Initialize theme icons
+        updateThemeToggleIcons();
+
+// Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('data-feather', 'menu');
+            } else {
+                icon.setAttribute('data-feather', 'x');
+            }
+            feather.replace();
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+  </html>
