@@ -22,17 +22,11 @@
         .order-step {
             position: relative;
         }
-        .order-step:not(:last-child):after {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            left: 1.5rem;
-            height: 100%;
-            width: 2px;
-            background-color: #e5e7eb;
-        }
-        .dark .order-step:not(:last-child):after {
-            background-color: #4b5563;
+        @media (max-width: 767px) {
+            .steps-flex {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -90,61 +84,78 @@
     <section class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
-                <!-- Progress Steps -->
+                <!-- Progress Steps with horizontal line below and step names to the right of step numbers -->
                 <div class="border-b border-gray-200 dark:border-gray-700">
-                    <div class="px-8 py-6">
-                        <div class="flex justify-between">
-                            <div class="flex-1 flex items-center order-step">
-                                <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center z-10">
-                                    <i data-feather="check" class="hidden" id="step1-check"></i>
-                                    <span class="font-bold" id="step1-number">1</span>
+                    <div class="px-4 md:px-8 py-6">
+                        <div class="relative flex steps-flex flex-col md:flex-row md:justify-between gap-4 md:gap-0 items-start md:items-end">
+                            <!-- Step 1 -->
+                            <div class="flex flex-1 flex-row items-center order-step relative z-10">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center z-10">
+                                        <i data-feather="check" class="hidden" id="step1-check"></i>
+                                        <span class="font-bold" id="step1-number">1</span>
+                                    </div>
+                                    <!-- vertical connector to line below (desktop only) -->
+                                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-full w-0.5 h-4 bg-gray-300 dark:bg-gray-600"></div>
                                 </div>
-                                <div class="ml-4">
+                                <div class="ml-4 flex-1">
                                     <h3 class="text-sm font-medium text-gray-900 dark:text-white">Project Details</h3>
                                 </div>
                             </div>
-                            <div class="flex-1 flex items-center order-step">
-                                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center z-10">
-                                    <i data-feather="check" class="hidden" id="step2-check"></i>
-                                    <span class="font-bold" id="step2-number">2</span>
+                            <!-- Step 2 -->
+                            <div class="flex flex-1 flex-row items-center order-step relative z-10">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center z-10">
+                                        <i data-feather="check" class="hidden" id="step2-check"></i>
+                                        <span class="font-bold" id="step2-number">2</span>
+                                    </div>
+                                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-full w-0.5 h-4 bg-gray-300 dark:bg-gray-600"></div>
                                 </div>
-                                <div class="ml-4">
+                                <div class="ml-4 flex-1">
                                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Payment</h3>
                                 </div>
                             </div>
-                            <div class="flex-1 flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center">
-                                    <i data-feather="check" class="hidden" id="step3-check"></i>
-                                    <span class="font-bold" id="step3-number">3</span>
+                            <!-- Step 3 -->
+                            <div class="flex flex-1 flex-row items-center relative z-10">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center">
+                                        <i data-feather="check" class="hidden" id="step3-check"></i>
+                                        <span class="font-bold" id="step3-number">3</span>
+                                    </div>
+                                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-full w-0.5 h-4 bg-gray-300 dark:bg-gray-600"></div>
                                 </div>
-                                <div class="ml-4">
+                                <div class="ml-4 flex-1">
                                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Confirmation</h3>
                                 </div>
                             </div>
+                            <!-- Horizontal line below steps (desktop only) -->
+                            <div class="absolute hidden md:block left-0 right-0 bottom-0 h-0.5 bg-gray-300 dark:bg-gray-600 z-0"></div>
+                            <!-- Vertical connectors for mobile (stacked steps) -->
+                            <div class="absolute md:hidden left-1/2 top-14 bottom-14 w-0.5 bg-gray-300 dark:bg-gray-600 z-0" style="transform: translateX(-50%);"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Step 1: Project Details -->
-                <div id="step1" class="px-8 py-8">
+                <div id="step1" class="px-4 md:px-8 py-8">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Project Information</h2>
                     <form id="order-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                                <input type="text" id="name" name="name" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                                <input type="email" id="email" name="email" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                             </div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                                <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                             </div>
                             <div>
                                 <label for="project-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Project Type</label>
-                                <select id="project-type" name="project-type" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                                <select id="project-type" name="project-type" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                                     <option value="">Select project type</option>
                                     <option value="website">Website</option>
                                     <option value="ecommerce">E-commerce Store</option>
@@ -158,17 +169,17 @@
 
                         <div class="mb-6">
                             <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Project Description</label>
-                            <textarea id="description" name="description" rows="4" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required></textarea>
+                            <textarea id="description" name="description" rows="4" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required></textarea>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="pages" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Number of Pages</label>
-                                <input type="number" id="pages" name="pages" min="1" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                                <input type="number" id="pages" name="pages" min="1" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                             </div>
                             <div>
                                 <label for="budget" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estimated Budget (INR)</label>
-                                <select id="budget" name="budget" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                                <select id="budget" name="budget" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
                                     <option value="">Select budget range</option>
                                     <option value="10000-25000">₹10,000 - ₹25,000</option>
                                     <option value="25000-50000">₹25,000 - ₹50,000</option>
@@ -180,7 +191,7 @@
 
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Required Features</label>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                                 <label class="flex items-center">
                                     <input type="checkbox" name="features" value="responsive" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-600 rounded">
                                     <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Responsive Design</span>
@@ -209,13 +220,13 @@
                         </div>
 
                         <div class="flex justify-end">
-                            <button type="button" id="next-btn" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Continue to Payment</button>
+                            <button type="button" id="next-btn" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-500">Continue to Payment</button>
                         </div>
                     </form>
                 </div>
 
                 <!-- Step 2: Payment -->
-                <div id="step2" class="px-8 py-8 hidden">
+                <div id="step2" class="px-4 md:px-8 py-8 hidden">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Payment Details</h2>
                     <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Order Summary</h3>
@@ -271,14 +282,14 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-between">
-                        <button type="button" id="back-btn" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-semibold px-6 py-3 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Back</button>
-                        <button type="button" id="proceed-payment-btn" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Proceed to Payment</button>
+                    <div class="flex flex-col sm:flex-row justify-between gap-4">
+                        <button type="button" id="back-btn" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-semibold px-6 py-3 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-500">Back</button>
+                        <button type="button" id="proceed-payment-btn" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-500">Proceed to Payment</button>
                     </div>
                 </div>
 
                 <!-- Step 3: Confirmation -->
-                <div id="step3" class="px-8 py-8 hidden">
+                <div id="step3" class="px-4 md:px-8 py-8 hidden">
                     <div class="text-center">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 dark:bg-green-900 mb-4">
                             <i data-feather="check" class="h-6 w-6 text-green-600 dark:text-green-400"></i>
@@ -309,8 +320,8 @@
                             <p class="text-gray-600 dark:text-gray-300 mb-4">Scan the QR code below or click the payment link to complete your payment.</p>
                             
                             <div class="flex flex-col items-center mb-4">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=pixelcraft@upi&pn=PixelCraft%20Studio&am=29500&cu=INR&tn=Order%20PC-2023-05678" alt="UPI QR Code" class="w-40 h-40 mb-4 border border-gray-200 dark:border-gray-600 p-2 rounded">
-                                <a href="upi://pay?pa=pixelcraft@upi&pn=PixelCraft%20Studio&am=29500&cu=INR&tn=Order%20PC-2023-05678" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition">Pay Now via UPI</a>
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=pixelcraft@upi&pn=PixelCraft%20Studio&am=29500&cu=INR&tn=Order%20PC-2023-05678" alt="UPI QR" class="mb-2">
+                                <a href="upi://pay?pa=pixelcraft@upi&pn=PixelCraft%20Studio&am=29500&cu=INR&tn=Order%20PC-2023-05678" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition">Pay Now</a>
                             </div>
                             <p class="text-sm text-gray-500 dark:text-gray-400 text-center">Please include the Order ID in the transaction note.</p>
                         </div>
@@ -330,15 +341,15 @@
     <section class="py-20 bg-gray-100 dark:bg-gray-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
-                <div class="px-8 py-6 border-b border-gray-200 dark:border-gray-600">
+                <div class="px-4 md:px-8 py-6 border-b border-gray-200 dark:border-gray-600">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Track Your Order</h2>
                 </div>
-                <div class="px-8 py-8">
+                <div class="px-4 md:px-8 py-8">
                     <div class="mb-6">
                         <label for="track-order-id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Enter Order ID</label>
-                        <div class="flex">
-                            <input type="text" id="track-order-id" class="form-input flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" placeholder="e.g. PC-2023-05678">
-                            <button id="track-btn" class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-r-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Track</button>
+                        <div class="flex flex-col sm:flex-row">
+                            <input type="text" id="track-order-id" class="form-input flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md sm:rounded-l-md sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white mb-2 sm:mb-0" placeholder="e.g. PC-2023-05678">
+                            <button id="track-btn" class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-500">Track</button>
                         </div>
                     </div>
 
@@ -423,7 +434,7 @@
                         <i data-feather="chevron-down" class="text-gray-500 dark:text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-content px-6 py-4 bg-white dark:bg-gray-900 hidden">
-                        <p class="text-gray-600 dark:text-gray-300">The timeline depends on the project scope and complexity. A simple website typically takes 2-4 weeks, while more complex projects may take 6-8 weeks or longer. We'll provide a detailed timeline after discussing your requirements.</p>
+                        <p class="text-gray-600 dark:text-gray-300">The timeline depends on the project scope and complexity. A simple website typically takes 2-4 weeks, while more complex projects may require extra time. We provide a detailed timeline after discussing your requirements.</p>
                     </div>
                 </div>
 
@@ -433,7 +444,7 @@
                         <i data-feather="chevron-down" class="text-gray-500 dark:text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-content px-6 py-4 bg-white dark:bg-gray-900 hidden">
-                        <p class="text-gray-600 dark:text-gray-300">We accept payments via UPI, bank transfers, and online payment gateways. For international clients, we accept PayPal and wire transfers. We require a 50% deposit to start the project, with the balance due upon completion.</p>
+                        <p class="text-gray-600 dark:text-gray-300">We accept payments via UPI, bank transfers, and online payment gateways. For international clients, we accept PayPal and wire transfers.</p>
                     </div>
                 </div>
 
@@ -443,12 +454,40 @@
                         <i data-feather="chevron-down" class="text-gray-500 dark:text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-content px-6 py-4 bg-white dark:bg-gray-900 hidden">
-                        <p class="text-gray-600 dark:text-gray-300">Yes, we can help you purchase and set up domain names and hosting services. We partner with reliable hosting providers and can recommend the best solution based on your needs and budget. Hosting fees are not included in our development costs.</p>
+                        <p class="text-gray-600 dark:text-gray-300">Yes, we can help you purchase and set up domain names and hosting services. We partner with reliable hosting providers and can recommend the best options for your needs.</p>
                     </div>
                 </div>
 
                 <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <button class="faq-btn flex justify-between items-center w-full px-6 py-4 text-left bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                        <span class="text-lg font-medium text-gray-900 dark:text-white">What if I need changes after the project is completed
+                        <span class="text-lg font-medium text-gray-900 dark:text-white">What if I need changes after the project is completed?</span>
+                        <i data-feather="chevron-down" class="text-gray-500 dark:text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 bg-white dark:bg-gray-900 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">We offer a free support period after project delivery for minor changes and bug fixes. For major changes or new features, we provide a quotation based on your requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').onclick = function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        };
+        // FAQ accordion
+        document.querySelectorAll('.faq-btn').forEach((btn, i) => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        // Feather icons
+        feather.replace();
+    </script>
 </body>
-  </html>
+    </html>
